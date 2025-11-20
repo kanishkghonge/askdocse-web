@@ -1,0 +1,37 @@
+theme: jekyll-theme-minimal
+title: DocSe - AI Diagnosis & Doctor Booking
+description: Bringing the first point of contact with healthcare to your phone. Get preliminary AI diagnosis in minutes with an urgency score, then validate it with a doctor instantly.
+
+# Site settings
+url: "https://askdocse.com"
+baseurl: ""
+
+# Social links
+social:
+  whatsapp: "https://wa.me/message/DSP677F3XRGVF1"
+  linkedin: "https://www.linkedin.com/company/medcortico"
+  instagram: "https://www.instagram.com/askdocse/"
+
+# Company info
+company:
+  name: "Medcortico Pvt Ltd"
+  website: "https://medcortico.com"
+
+# SEO settings
+lang: en
+author: Medcortico Pvt Ltd
+keywords: AI diagnosis, doctor booking, teleconsultation, healthcare app, medical AI, online doctor, health tech
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude files from build
+exclude:
+  - README.md
+  - node_modules/
+  - vendor/
+  - .git/
+  - .gitignore

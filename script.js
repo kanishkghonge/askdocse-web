@@ -82,12 +82,89 @@ if (teleBtn && teleOverlay) {
     });
 }
 
+// Mobile Menu Functionality
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileNavMenu = document.getElementById('mobileNavMenu');
+
+if (mobileMenuToggle && mobileNavMenu) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        mobileNavMenu.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (mobileNavMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close mobile menu when clicking on a link
+    mobileNavMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            mobileNavMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && !mobileNavMenu.contains(e.target)) {
+            mobileMenuToggle.classList.remove('active');
+            mobileNavMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close mobile menu on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            mobileMenuToggle.classList.remove('active');
+            mobileNavMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
 // Add smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
+
+// Mobile-specific adjustments for neural field
+function adjustNeuralFieldForMobile() {
+    const isMobile = window.innerWidth <= 768;
+    const neuralField = document.getElementById('neuralField');
+    
+    if (!neuralField) return;
+    
+    if (isMobile) {
+        // Adjust neural field height based on screen size
+        if (window.innerWidth <= 480) {
+            neuralField.style.height = '500px';
+        } else {
+            neuralField.style.height = '600px';
+        }
+        
+        // Reduce animation complexity on mobile for better performance
+        const pulseLines = neuralField.querySelectorAll('.pulse-line');
+        pulseLines.forEach(line => {
+            line.style.strokeWidth = '2';
+        });
+    } else {
+        neuralField.style.height = '800px';
+    }
+}
+
+// Run on load and resize
+adjustNeuralFieldForMobile();
+window.addEventListener('resize', adjustNeuralFieldForMobile);

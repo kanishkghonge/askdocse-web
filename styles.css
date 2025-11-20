@@ -1391,49 +1391,517 @@ body {
     }
 }
 
-@media (max-width:768px) {
+/* Mobile Navigation Styles */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    gap: 4px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--neon-cyan);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-nav-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 14, 39, 0.98);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: left 0.3s ease;
+}
+
+.mobile-nav-menu.active {
+    left: 0;
+}
+
+.mobile-nav-menu a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-menu a:hover {
+    background: rgba(0, 242, 255, 0.1);
+    color: var(--neon-cyan);
+}
+
+.mobile-nav-social {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .glass-nav {
+        padding: 1rem 3%;
+    }
+    
+    .hero {
+        padding: 4rem 5%;
+        gap: 3rem;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .ask-container {
+        font-size: 2.8rem;
+    }
+    
+    .hero-logo-large {
+        height: 140px;
+    }
+    
+    .hero-card {
+        width: 350px;
+        height: 580px;
+    }
+    
+    .section {
+        padding: 4rem 5%;
+    }
+    
+    .neural-field {
+        height: auto;
+        padding: 2rem;
+    }
+
+    .dx-panel {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 3rem;
+        width: 100%;
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 768px) {
+    .glass-nav {
+        padding: 1rem 4%;
+        position: relative;
+    }
+    
+    .logo {
+        height: 60px;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 6rem 5% 3rem
+        padding: 4rem 4% 3rem;
+        align-items: center;
+        justify-content: center;
+        min-height: 85vh;
     }
 
     .hero-content {
-        margin-bottom: 4rem
+        margin-bottom: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
     }
 
     .hero-title {
-        font-size: 3rem
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
     }
 
     .ask-container {
-        justify-content: center
+        justify-content: center;
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .hero-logo-large {
+        height: 120px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .btn-store {
+        flex: 1;
+        min-width: 140px;
+        justify-content: center;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-cta-web {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        text-align: center;
+        margin-top: 0.5rem;
     }
 
-    .nav-links {
-        display: none
+    .hero-visual {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .hero-card {
+        width: 100%;
+        max-width: 320px;
+        height: 480px;
+        margin: 0 auto;
     }
 
     .doctor-content-wrapper {
         flex-direction: column;
         gap: 3rem;
+        text-align: center;
     }
 
     .doctor-text-content {
         max-width: 100%;
     }
+    
+    .doctor-features {
+        gap: 1.5rem;
+    }
+    
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+    
+    .feature-item:hover {
+        transform: translateY(-5px);
+    }
 
     .doctor-card {
         width: 100%;
-        max-width: 350px;
-        height: 500px;
+        max-width: 300px;
+        height: 450px;
+        margin: 0 auto;
     }
 
+    .section-title {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    
     .section-title-large {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        text-align: center;
+        line-height: 1.2;
     }
 
-    .chatgpt-logo {
-        height: 2em;
+    .chatgpt-logo, .docse-app-logo {
+        height: 1.8em;
+    }
+    
+    .section-subtitle-main {
+        font-size: 1.2rem;
+    }
+    
+    .section-subtitle-detail {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* Neural Field Mobile Optimizations */
+    .neural-field {
+        height: 600px;
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+
+    .node {
+        pointer-events: none;
+    }
+
+    .node-label {
+        font-size: 0.65rem;
+        white-space: normal;
+        max-width: 100px;
+        line-height: 1.2;
+        top: -45px;
+    }
+
+    .node.active .node-label {
+        transform: translateX(-50%) translateY(0) scale(0.95);
+    }
+
+    .dx-panel {
+        width: calc(100% - 2rem);
+        max-width: none;
+        padding: 1.5rem;
+        margin: 1rem;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+    }
+
+    .dx-panel.show {
+        transform: none;
+    }
+
+    .dx-diagnosis {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .dx-header {
+        margin-bottom: 1rem;
+        padding-bottom: 0.8rem;
+    }
+
+    .dx-title {
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+    }
+
+    .urgency-bar-container {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .urgency-bar {
+        height: 24px;
+        width: 100%;
+    }
+
+    .urgency-value {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    
+    .reviews-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .glass-nav {
+        padding: 0.8rem 3%;
+    }
+    
+    .logo {
+        height: 50px;
+    }
+    
+    .logo-text {
+        font-size: 1.3rem;
+    }
+    
+    .hero {
+        padding: 3rem 3% 2rem;
+        min-height: 80vh;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .ask-container {
+        font-size: 1.8rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .hero-logo-large {
+        height: 100px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .btn-store {
+        min-width: 120px;
+        padding: 0.7rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .btn-cta-web {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .hero-card {
+        max-width: 280px;
+        height: 420px;
+    }
+    
+    .section {
+        padding: 3rem 3%;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-title-large {
+        font-size: 1.6rem;
+    }
+    
+    .doctor-feature-title {
+        font-size: 1.8rem;
+    }
+    
+    .feature-details h4 {
+        font-size: 1.2rem;
+    }
+    
+    .feature-details p {
+        font-size: 1rem;
+    }
+
+    /* Neural Field Extra Small Mobile */
+    .neural-field {
+        height: 500px;
+        padding: 0.5rem;
+    }
+
+    .node-core {
+        width: 10px;
+        height: 10px;
+    }
+
+    .node.active .node-core {
+        width: 14px;
+        height: 14px;
+    }
+
+    .node.dim .node-core {
+        width: 6px;
+        height: 6px;
+    }
+
+    .node-label {
+        font-size: 0.6rem;
+        max-width: 80px;
+        top: -40px;
+    }
+
+    .node-rings div:nth-child(1) {
+        width: 30px;
+        height: 30px;
+        margin-left: -15px;
+        margin-top: -15px;
+    }
+
+    .node-rings div:nth-child(2) {
+        width: 50px;
+        height: 50px;
+        margin-left: -25px;
+        margin-top: -25px;
+    }
+    
+    .dx-panel {
+        padding: 1.2rem;
+        width: calc(100% - 1.5rem);
+        margin: 1rem 0.75rem;
+    }
+    
+    .dx-diagnosis {
+        font-size: 1.4rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .dx-header {
+        gap: 10px;
+    }
+
+    .dx-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .dx-title {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+
+    .urgency-bar {
+        height: 20px;
+    }
+
+    .urgency-value {
+        font-size: 1.1rem;
     }
 }
