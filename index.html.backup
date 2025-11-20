@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocSe - AI Diagnosis & Doctor Booking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <nav class="glass-nav">
+        <div class="logo-container">
+            <img src="photos/logo.png" alt="DocSe Logo" class="logo">
+            <span class="logo-text">DocSe</span>
+        </div>
+        <div class="nav-links">
+            <a href="#why-docse">Why DocSe?</a>
+            <a href="#features">Features</a>
+            <a href="#reviews">Reviews</a>
+            <button class="btn-primary">Download App</button>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Feeling sick? <br><span class="highlight">Skip the risk.</span></h1>
+            <div class="ask-container">
+                <div class="ask-dynamic-wrapper"><span class="ask-dynamic" id="dynamic-text">Ask</span></div>
+                <img src="photos/logo.png" alt="DocSe Logo" class="hero-logo-large">
+            </div>
+            <p class="hero-subtitle">Get AI-powered diagnosis and connect with doctors instantly.</p>
+            <div class="hero-buttons">
+                <a href="coming-soon.html" class="btn-store">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                    </svg>
+                    <span>Google Play</span>
+                </a>
+                <a href="coming-soon.html" class="btn-store">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.69C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.37 12.36,4.26 13,3.5Z" />
+                    </svg>
+                    <span>App Store</span>
+                </a>
+                <a href="#" class="btn-cta-web">Try Now on Web</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card glass-card">
+                <div class="chat-interface">
+                    <div class="chat-msg ai">Hello! I'm DocSe. How are you feeling today?</div>
+                    <div class="chat-msg user">I have a fever and a headache.</div>
+                    <div class="chat-msg ai processing">Analyzing symptoms...</div>
+                    <div class="urgency-indicator"><span>⚠️ High Urgency Detected</span></div>
+                    <button class="btn-teleconsult" id="tele-btn"><span>📹</span> Book Teleconsultation</button>
+                </div>
+                <div class="tele-overlay" id="tele-overlay">
+                    <img src="photos/tele.jpeg" alt="Doctor Teleconsultation">
+                    <div class="overlay-badge">Connecting to Dr. Sharma...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="why-docse" class="section">
+        <h2 class="section-title">But why use DocSe and not ChatGPT?</h2>
+        <p class="section-subtitle">Because generic AI guesses. DocSe connects the dots.</p>
+        <div class="neural-field" id="neuralField">
+            <svg class="static-web" id="staticWeb" viewBox="0 0 1000 800" preserveAspectRatio="none"></svg>
+            <svg class="pulse-layer" id="pulseLayer" viewBox="0 0 1000 800" preserveAspectRatio="none"></svg>
+
+            <div class="node" id="n1" style="top:10%;left:10%;" data-id="history">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Diabetes Diagnosis in 2012</span>
+            </div>
+            <div class="node" id="n2" style="top:20%;left:65%;" data-id="hba1c">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">High HbA₁c - 6 Months Back</span>
+            </div>
+            <div class="node" id="n3" style="top:45%;left:20%;" data-id="tingling">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Tingling in Feet - 2 Months Back</span>
+            </div>
+
+            <div class="node" id="n4" style="top:15%;left:75%;" data-id="travel">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Recent Travel to Tropics</span>
+            </div>
+            <div class="node" id="n5" style="top:35%;left:35%;" data-id="cold">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Feeling Too Cold - 2 Days Back</span>
+            </div>
+            <div class="node" id="n6" style="top:40%;left:70%;" data-id="fever">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">High Fever</span>
+            </div>
+
+            <div class="node dim" style="top:10%;left:45%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:25%;left:50%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:30%;left:15%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:35%;left:85%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:50%;left:55%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:45%;left:85%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:30%;left:80%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:50%;left:45%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:55%;left:25%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:60%;left:65%;">
+                <div class="node-core"></div>
+            </div>
+
+            <!-- Central Diagnosis Node -->
+            <div class="node diagnosis-node" id="diagnosisNode" style="top:70%;left:50%;">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div>
+                <span class="node-label">Diagnosis</span>
+            </div>
+
+            <div class="dx-panel" id="dxPanel">
+                <div class="dx-header">
+                    <div class="dx-icon">
+                        <svg width="30" height="30" viewBox="0 0 30 30">
+                            <circle cx="15" cy="15" r="12" fill="none" stroke="#00f2ff" stroke-width="2" />
+                            <circle cx="15" cy="15" r="8" fill="none" stroke="#00f2ff" stroke-width="1" />
+                            <circle cx="15" cy="15" r="4" fill="#00f2ff" />
+                        </svg>
+                    </div>
+                </div>
+    </section>
+    <section id="features" class="section">
+        <h2 class="section-title">Features</h2>
+        <p class="section-subtitle">Everything you need for your health journey.</p>
+        <div class="reviews-container">
+            <div class="glass-card" style="padding:2rem;">
+                <h3 style="font-size:1.5rem;margin-bottom:1rem;">AI Diagnosis</h3>
+                <p style="color:var(--text-muted);">Instant analysis using advanced machine learning models.</p>
+            </div>
+            <div class="glass-card" style="padding:2rem;">
+                <h3 style="font-size:1.5rem;margin-bottom:1rem;">Doctor Booking</h3>
+                <p style="color:var(--text-muted);">Connect with top specialists for second opinion.</p>
+            </div>
+            <div class="glass-card" style="padding:2rem;">
+                <h3 style="font-size:1.5rem;margin-bottom:1rem;">Health Records</h3>
+                <p style="color:var(--text-muted);">Securely store your medical history in one place.</p>
+            </div>
+        </div>
+    </section>
+    <section id="reviews" class="section">
+        <h2 class="section-title">User Reviews</h2>
+        <p class="section-subtitle">Trusted by thousands of users.</p>
+        <div class="reviews-container">
+            <div class="glass-card review-card">
+                <div class="review-header">
+                    <div class="avatar">A</div>
+                    <div class="user-info">
+                        <h4>Anjali S.</h4><span class="stars">⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+                <p class="review-text">"Accurate diagnosis! It predicted my migraine triggers perfectly."</p>
+            </div>
+            <div class="glass-card review-card">
+                <div class="review-header">
+                    <div class="avatar">R</div>
+                    <div class="user-info">
+                        <h4>Rohan K.</h4><span class="stars">⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+                <p class="review-text">"Very easy to use. The doctor I booked was very professional."</p>
+            </div>
+            <div class="glass-card review-card">
+                <div class="review-header">
+                    <div class="avatar">P</div>
+                    <div class="user-info">
+                        <h4>Priya M.</h4><span class="stars">⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+                <p class="review-text">"Great app for quick health checks. Saved me a trip to the clinic."</p>
+            </div>
+        </div>
+    </section>
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>DocSe</h3>
+                <p>Your personal AI health companion.</p>
+            </div>
+            <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a
+                    href="#">Contact</a></div>
+        </div>
+        <div class="footer-bottom">&copy; 2024 DocSe. All rights reserved.</div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        const scenarios = [
+            {
+                path: ['n1', 'n2', 'n3'],
+                diagnosis: 'Diabetic Foot Ulcer',
+                urgency: 90,
+                score: '9/10',
+                color: '#00f2ff'
+            },
+            {
+                path: ['n4', 'n5', 'n6'],
+                diagnosis: 'Malaria',
+                urgency: 75,
+                score: '7.5/10',
+                color: '#ffbd2e'
+            }
+        ];
+        let currentScenarioIndex = 0;
+        const glowingLines = [];
+
+        function getNodePos(id) {
+            const node = document.getElementById(id);
+            const rect = node.getBoundingClientRect();
+            const container = document.getElementById('neuralField').getBoundingClientRect();
+            const relX = (rect.left + rect.width / 2 - container.left) / container.width;
+            const relY = (rect.top + rect.height / 2 - container.top) / container.height;
+            return {
+                x: relX * 1000,
+                y: relY * 800
+            };
+        }
+
+        function createStaticWeb() {
+            const svg = document.getElementById('staticWeb');
+            svg.innerHTML = '';
+            const nodes = document.querySelectorAll('.node');
+            const positions = [];
+
+            nodes.forEach(node => {
+                if (node.style.top && node.style.left) {
+                    const top = parseFloat(node.style.top);
+                    const left = parseFloat(node.style.left);
+                    positions.push({ x: left * 10, y: top * 8, id: node.id });
+                }
+            });
+
+            positions.forEach((p1, i) => {
+                positions.forEach((p2, j) => {
+                    if (i < j) {
+                        const dist = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+                        if (dist < 400) {
+                            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            line.setAttribute('x1', p1.x);
+                            line.setAttribute('y1', p1.y);
+                            line.setAttribute('x2', p2.x);
+                            line.setAttribute('y2', p2.y);
+                            line.setAttribute('class', 'web-line');
+                            svg.appendChild(line);
+                        }
+                    }
+                });
+            });
+        }
+
+        function drawLine(fromId, toId, duration = 1500, color = '#00f2ff') {
+            return new Promise(resolve => {
+                const fromPos = getNodePos(fromId);
+                const toPos = getNodePos(toId);
+
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('class', 'pulse-line');
+                line.setAttribute('x1', fromPos.x);
+                line.setAttribute('y1', fromPos.y);
+                line.setAttribute('x2', toPos.x);
+                line.setAttribute('y2', toPos.y);
+
+                line.style.stroke = color;
+                line.style.filter = `drop-shadow(0 0 8px ${color})`;
+
+                const length = Math.sqrt(
+                    Math.pow(toPos.x - fromPos.x, 2) +
+                    Math.pow(toPos.y - fromPos.y, 2)
+                );
+
+                line.style.strokeDasharray = length;
+                line.style.strokeDashoffset = length;
+
+                document.getElementById('pulseLayer').appendChild(line);
+                glowingLines.push(line);
+
+                line.getBoundingClientRect();
+
+                line.style.transition = `stroke-dashoffset ${duration}ms linear`;
+                requestAnimationFrame(() => {
+                    line.style.strokeDashoffset = '0';
+                });
+
+                setTimeout(resolve, duration);
+            });
+        }
+
+        function activateNode(id) {
+            return new Promise(resolve => {
+                const node = document.getElementById(id);
+                node.classList.add('active');
+                setTimeout(resolve, 500);
+            });
+        }
+
+        function resetAnimation() {
+            document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+            document.getElementById('dxPanel').classList.remove('show');
+            glowingLines.forEach(line => line.remove());
+            glowingLines.length = 0;
+            document.getElementById('dxText').textContent = '';
+            document.getElementById('urgBar').style.width = '0%';
+
+            const dxPanel = document.getElementById('dxPanel');
+            dxPanel.style.borderColor = '';
+            dxPanel.style.boxShadow = '';
+            document.getElementById('urgBar').style.backgroundColor = '';
+            document.getElementById('urgBar').style.boxShadow = '';
+            const iconCircles = dxPanel.querySelectorAll('.dx-icon circle');
+            iconCircles.forEach(c => {
+                if (c.getAttribute('fill') !== 'none') c.setAttribute('fill', '#00f2ff');
+                else c.setAttribute('stroke', '#00f2ff');
+            });
+        }
+
+        async function runSequence() {
+            const scenario = scenarios[currentScenarioIndex];
+            const color = scenario.color || '#00f2ff';
+
+            resetAnimation();
+            await new Promise(r => setTimeout(r, 500));
+
+            await activateNode(scenario.path[0]);
+
+            for (let i = 0; i < scenario.path.length - 1; i++) {
+                const currentId = scenario.path[i];
+                const nextId = scenario.path[i + 1];
+                await drawLine(currentId, nextId, 1500, color);
+                await activateNode(nextId);
+            }
+
+            const lastSymptomId = scenario.path[scenario.path.length - 1];
+            await drawLine(lastSymptomId, 'diagnosisNode', 1500, color);
+            await activateNode('diagnosisNode');
+
+            const diagPos = getNodePos('diagnosisNode');
+            const panelTarget = { x: diagPos.x, y: 800 };
+            const length = Math.abs(panelTarget.y - diagPos.y);
+
+            const finalPulse = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            finalPulse.setAttribute('class', 'pulse-line');
+            finalPulse.style.stroke = color;
+            finalPulse.style.filter = `drop-shadow(0 0 8px ${color})`;
+            finalPulse.setAttribute('x1', diagPos.x);
+            finalPulse.setAttribute('y1', diagPos.y);
+            finalPulse.setAttribute('x2', panelTarget.x);
+            finalPulse.setAttribute('y2', panelTarget.y);
+
+            finalPulse.style.strokeDasharray = length;
+            finalPulse.style.strokeDashoffset = length;
+
+            document.getElementById('pulseLayer').appendChild(finalPulse);
+            glowingLines.push(finalPulse);
+
+            finalPulse.getBoundingClientRect();
+
+            finalPulse.style.transition = 'stroke-dashoffset 1.5s ease-out';
+            requestAnimationFrame(() => {
+                finalPulse.style.strokeDashoffset = '0';
+            });
+
+            await new Promise(r => setTimeout(r, 1500));
+
+            const dxPanel = document.getElementById('dxPanel');
+            document.getElementById('dxText').textContent = scenario.diagnosis;
+            document.getElementById('urgNum').textContent = scenario.score;
+
+            dxPanel.style.borderColor = color;
+            dxPanel.style.boxShadow = `0 10px 60px ${color}4d, inset 0 0 30px ${color}0d`;
+
+            document.getElementById('urgBar').style.backgroundColor = color;
+            document.getElementById('urgBar').style.boxShadow = `0 0 10px ${color}`;
+
+            const iconCircles = dxPanel.querySelectorAll('.dx-icon circle');
+            iconCircles.forEach(c => {
+                if (c.getAttribute('fill') !== 'none') c.setAttribute('fill', color);
+                else c.setAttribute('stroke', color);
+            });
+
+            dxPanel.classList.add('show');
+
+            setTimeout(() => {
+                document.getElementById('urgBar').style.width = scenario.urgency + '%';
+            }, 300);
+
+            setTimeout(() => {
+                currentScenarioIndex = (currentScenarioIndex + 1) % scenarios.length;
+                runSequence();
+            }, 6000);
+        }
+
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                createStaticWeb();
+            }, 200);
+        });
+
+        createStaticWeb();
+        setTimeout(runSequence, 1000);
+    </script>
+</body>
+
+</html>

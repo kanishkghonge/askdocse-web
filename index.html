@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocSe - AI Diagnosis & Doctor Booking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="glass-nav">
+        <div class="logo-container">
+            <span class="logo-text">Ask</span>
+            <img src="photos/logo.png" alt="DocSe Logo" class="logo">
+        </div>
+        <div class="nav-links">
+            <a href="#why-docse">Why DocSe?</a>
+            <a href="#reviews">Reviews</a>
+            <div class="nav-social">
+                <a href="https://wa.me/message/DSP677F3XRGVF1" target="_blank" class="nav-social-link">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/company/medcortico" target="_blank" class="nav-social-link">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/askdocse/" target="_blank" class="nav-social-link">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+            <button class="btn-primary">Try Now</button>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Feeling sick? <br><span class="highlight">Skip the risk.</span></h1>
+            <div class="ask-container">
+                <div class="ask-dynamic-wrapper"><span class="ask-dynamic" id="dynamic-text">Ask</span></div>
+                <img src="photos/logo.png" alt="DocSe Logo" class="hero-logo-large">
+            </div>
+            <p class="hero-subtitle">Get preliminary AI diagnosis in minutes, along with an urgency score. Validate it with a doctor instantly.</p>
+            <div class="hero-buttons">
+                <a href="coming-soon.html" class="btn-store">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                    </svg>
+                    <span>Google Play</span>
+                </a>
+                <a href="coming-soon.html" class="btn-store">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.69C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.37 12.36,4.26 13,3.5Z" />
+                    </svg>
+                    <span>App Store</span>
+                </a>
+                <a href="#" class="btn-cta-web">Try Now on Web</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card glass-card">
+                <div class="chat-interface">
+                    <div class="chat-msg ai">Hello! I'm DocSe. How are you feeling today?</div>
+                    <div class="chat-msg user">I have a fever and a headache.</div>
+                    <div class="chat-msg ai processing">Analyzing symptoms...</div>
+                    <div class="urgency-indicator"><span>⚠️ High Urgency Detected</span></div>
+                    <button class="btn-teleconsult" id="tele-btn"><span>📹</span> Book Teleconsultation</button>
+                </div>
+                <div class="tele-overlay" id="tele-overlay">
+                    <img src="photos/tele.jpeg" alt="Doctor Teleconsultation">
+                    <div class="overlay-badge">Connecting to Dr. Sharma...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="why-docse" class="section">
+        <h2 class="section-title-large">But why use <img src="photos/logo.png" alt="DocSe App" class="docse-app-logo"> and not <img src="photos/chatgpt-logo.png" alt="ChatGPT" class="chatgpt-logo">?</h2>
+        <p class="section-subtitle-main">Because generic AI guesses. DocSe connects the dots.</p>
+        <p class="section-subtitle-detail">It remembers your previous complaints, your medical records and takes them into consideration along with your present complaints, generating a more accurate diagnosis by capturing long term patterns & subtle complaints.</p>
+        <div class="neural-field" id="neuralField">
+            <svg class="static-web" id="staticWeb" viewBox="0 0 1000 800" preserveAspectRatio="none"></svg>
+            <svg class="pulse-layer" id="pulseLayer" viewBox="0 0 1000 800" preserveAspectRatio="none"></svg>
+
+            <div class="node" id="n1" style="top:10%;left:10%;" data-id="history">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Diabetes Diagnosis in 2012</span>
+            </div>
+            <div class="node" id="n2" style="top:20%;left:65%;" data-id="hba1c">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">High HbA₁c - 6 Months Back</span>
+            </div>
+            <div class="node" id="n3" style="top:45%;left:20%;" data-id="tingling">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Tingling in Feet - 2 Months Back</span>
+            </div>
+
+            <div class="node" id="n4" style="top:15%;left:75%;" data-id="travel">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Recent Travel to Tropics</span>
+            </div>
+            <div class="node" id="n5" style="top:35%;left:35%;" data-id="cold">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Feeling Too Cold - 2 Days Back</span>
+            </div>
+            <div class="node" id="n6" style="top:40%;left:70%;" data-id="fever">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">High Fever</span>
+            </div>
+
+            <div class="node dim" style="top:10%;left:45%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:25%;left:50%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:30%;left:15%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:35%;left:85%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:50%;left:55%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:45%;left:85%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:30%;left:80%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:50%;left:45%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:55%;left:25%;">
+                <div class="node-core"></div>
+            </div>
+            <div class="node dim" style="top:60%;left:65%;">
+                <div class="node-core"></div>
+            </div>
+
+            <!-- Central Diagnosis Node -->
+            <div class="node diagnosis-node" id="diagnosisNode" style="top:70%;left:50%;">
+                <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div>
+                <span class="node-label">Diagnosis</span>
+            </div>
+
+            <div class="dx-panel" id="dxPanel">
+                <div class="dx-header">
+                    <div class="dx-icon">
+                        <svg width="30" height="30" viewBox="0 0 30 30">
+                            <circle cx="15" cy="15" r="12" fill="none" stroke="#00f2ff" stroke-width="2" />
+                            <circle cx="15" cy="15" r="8" fill="none" stroke="#00f2ff" stroke-width="1" />
+                            <circle cx="15" cy="15" r="4" fill="#00f2ff" />
+                        </svg>
+                    </div>
+                    <div class="dx-title">AI DIAGNOSTIC ANALYSIS</div>
+                </div>
+                <div class="dx-diagnosis" id="dxText"></div>
+                <div class="dx-urgency-section">
+                    <div class="urgency-label">URGENCY LEVEL</div>
+                    <div class="urgency-bar-container">
+                        <div class="urgency-bar">
+                            <div class="urgency-gradient"></div>
+                            <div class="urgency-bar-fill" id="urgBar"></div>
+                        </div>
+                        <div class="urgency-value" id="urgNum"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="features" class="section doctor-validation-section">
+        <h2 class="section-title">Validate the AI diagnosis by an actual doctor within minutes!</h2>
+        <div class="doctor-content-wrapper">
+            <div class="doctor-text-content">
+                <h3 class="doctor-feature-title">Quick & Affordable Consultations</h3>
+                <div class="doctor-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="feature-details">
+                            <h4>Instant Connection</h4>
+                            <p>Connect with verified doctors in under 2 minutes. No waiting rooms, no delays.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <div class="feature-details">
+                            <h4>Highly Affordable</h4>
+                            <p>Get expert medical advice at a fraction of traditional consultation costs.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </div>
+                        <div class="feature-details">
+                            <h4>Care When You Need It</h4>
+                            <p>24/7 availability ensures you get the care you need, exactly when you need it.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="feature-details">
+                            <h4>Verified Professionals</h4>
+                            <p>All doctors are licensed and verified to provide quality healthcare.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-animation-container">
+                <div class="doctor-card glass-card">
+                    <img src="photos/dr sharma waiting screen.png" alt="Dr. Sharma Waiting" class="doctor-img waiting-img active">
+                    <img src="photos/dr sharma vid call.png" alt="Dr. Sharma Video Call" class="doctor-img call-img">
+                    <div class="doctor-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Connecting to Dr. Sharma...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="reviews" class="section">
+        <h2 class="section-title">Totally Real Reviews</h2>
+        <p class="section-subtitle">Use the app now on web to see for yourself!</p>
+        <div class="web-test-button-container">
+            <a href="#" class="btn-test-web">Test on Web Here</a>
+        </div>
+        <div class="reviews-container">
+            <div class="glass-card review-card">
+                <div class="review-header">
+                    <div class="avatar">D</div>
+                    <div class="user-info">
+                        <h4>Definitely Real Person</h4><span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="verified-badge">✓ Verified Purchase*</span>
+                    </div>
+                </div>
+                <p class="review-text">"Best app ever! It's not like I'm being paid to say this or anything. 10/10 would diagnose again."</p>
+            </div>
+            <div class="glass-card review-card">
+                <div class="review-header">
+                    <div class="avatar">N</div>
+                    <div class="user-info">
+                        <h4>NotABot_2024</h4><span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="verified-badge">✓ Real Human</span>
+                    </div>
+                </div>
+                <p class="review-text">"Amazing! I definitely exist and this review is 100% genuine. My lawyer says I can't say anything bad about it anyway."</p>
+            </div>
+            <div class="glass-card review-card">
+                <div class="review-header">
+                    <div class="avatar">C</div>
+                    <div class="user-info">
+                        <h4>CEO's Mom</h4><span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="verified-badge">✓ Unbiased</span>
+                    </div>
+                </div>
+                <p class="review-text">"My son made this and I'm very proud. Also it's great. Did I mention my son made it? Five stars."</p>
+            </div>
+        </div>
+        <p class="review-disclaimer-large">* Reviews may or may not be from actual users. But hey, at least we're honest about it.</p>
+    </section>
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>DocSe</h3>
+                <p>Bringing the first point of contact with healthcare to your phone.</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://wa.me/message/DSP677F3XRGVF1" target="_blank" class="social-link">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/company/medcortico" target="_blank" class="social-link">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/askdocse/" target="_blank" class="social-link">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Built by <a href="https://medcortico.com" target="_blank" class="company-link">Medcortico Pvt Ltd</a></p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        const scenarios = [
+            {
+                path: ['n1', 'n2', 'n3'],
+                diagnosis: 'Diabetic Foot Ulcer',
+                urgency: 90,
+                score: '9/10',
+                color: '#00f2ff'
+            },
+            {
+                path: ['n4', 'n5', 'n6'],
+                diagnosis: 'Malaria',
+                urgency: 75,
+                score: '7.5/10',
+                color: '#ffbd2e'
+            }
+        ];
+        let currentScenarioIndex = 0;
+        const glowingLines = [];
+
+        function getNodePos(id) {
+            const node = document.getElementById(id);
+            const rect = node.getBoundingClientRect();
+            const container = document.getElementById('neuralField').getBoundingClientRect();
+            const relX = (rect.left + rect.width / 2 - container.left) / container.width;
+            const relY = (rect.top + rect.height / 2 - container.top) / container.height;
+            return {
+                x: relX * 1000,
+                y: relY * 800
+            };
+        }
+
+        function createStaticWeb() {
+            const svg = document.getElementById('staticWeb');
+            svg.innerHTML = '';
+            const nodes = document.querySelectorAll('.node');
+            const positions = [];
+
+            nodes.forEach(node => {
+                if (node.style.top && node.style.left) {
+                    const top = parseFloat(node.style.top);
+                    const left = parseFloat(node.style.left);
+                    positions.push({ x: left * 10, y: top * 8, id: node.id });
+                }
+            });
+
+            positions.forEach((p1, i) => {
+                positions.forEach((p2, j) => {
+                    if (i < j) {
+                        const dist = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+                        if (dist < 400) {
+                            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            line.setAttribute('x1', p1.x);
+                            line.setAttribute('y1', p1.y);
+                            line.setAttribute('x2', p2.x);
+                            line.setAttribute('y2', p2.y);
+                            line.setAttribute('class', 'web-line');
+                            svg.appendChild(line);
+                        }
+                    }
+                });
+            });
+        }
+
+        function drawLine(fromId, toId, duration = 800, color = '#00f2ff') {
+            return new Promise(resolve => {
+                const fromPos = getNodePos(fromId);
+                const toPos = getNodePos(toId);
+
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('class', 'pulse-line');
+                line.setAttribute('x1', fromPos.x);
+                line.setAttribute('y1', fromPos.y);
+                line.setAttribute('x2', toPos.x);
+                line.setAttribute('y2', toPos.y);
+
+                line.style.stroke = color;
+                line.style.filter = `drop-shadow(0 0 8px ${color})`;
+
+                const length = Math.sqrt(
+                    Math.pow(toPos.x - fromPos.x, 2) +
+                    Math.pow(toPos.y - fromPos.y, 2)
+                );
+
+                line.style.strokeDasharray = length;
+                line.style.strokeDashoffset = length;
+
+                document.getElementById('pulseLayer').appendChild(line);
+                glowingLines.push(line);
+
+                line.getBoundingClientRect();
+
+                line.style.transition = `stroke-dashoffset ${duration}ms linear`;
+                requestAnimationFrame(() => {
+                    line.style.strokeDashoffset = '0';
+                });
+
+                setTimeout(resolve, duration);
+            });
+        }
+
+        function activateNode(id) {
+            return new Promise(resolve => {
+                const node = document.getElementById(id);
+                node.classList.add('active');
+                setTimeout(resolve, 300);
+            });
+        }
+
+        function resetAnimation() {
+            document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+            document.getElementById('dxPanel').classList.remove('show');
+            glowingLines.forEach(line => line.remove());
+            glowingLines.length = 0;
+            document.getElementById('dxText').textContent = '';
+            document.getElementById('urgBar').style.width = '0%';
+
+            const dxPanel = document.getElementById('dxPanel');
+            dxPanel.style.borderColor = '';
+            dxPanel.style.boxShadow = '';
+            document.getElementById('urgBar').style.backgroundColor = '';
+            document.getElementById('urgBar').style.boxShadow = '';
+            const iconCircles = dxPanel.querySelectorAll('.dx-icon circle');
+            iconCircles.forEach(c => {
+                if (c.getAttribute('fill') !== 'none') c.setAttribute('fill', '#00f2ff');
+                else c.setAttribute('stroke', '#00f2ff');
+            });
+        }
+
+        async function runSequence() {
+            const scenario = scenarios[currentScenarioIndex];
+            const color = scenario.color || '#00f2ff';
+
+            resetAnimation();
+            await new Promise(r => setTimeout(r, 300));
+
+            await activateNode(scenario.path[0]);
+
+            for (let i = 0; i < scenario.path.length - 1; i++) {
+                const currentId = scenario.path[i];
+                const nextId = scenario.path[i + 1];
+                await drawLine(currentId, nextId, 800, color);
+                await activateNode(nextId);
+            }
+
+            const lastSymptomId = scenario.path[scenario.path.length - 1];
+            await drawLine(lastSymptomId, 'diagnosisNode', 800, color);
+            await activateNode('diagnosisNode');
+
+            const diagPos = getNodePos('diagnosisNode');
+            const panelTarget = { x: diagPos.x, y: 800 };
+            const length = Math.abs(panelTarget.y - diagPos.y);
+
+            const finalPulse = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            finalPulse.setAttribute('class', 'pulse-line');
+            finalPulse.style.stroke = color;
+            finalPulse.style.filter = `drop-shadow(0 0 8px ${color})`;
+            finalPulse.setAttribute('x1', diagPos.x);
+            finalPulse.setAttribute('y1', diagPos.y);
+            finalPulse.setAttribute('x2', panelTarget.x);
+            finalPulse.setAttribute('y2', panelTarget.y);
+
+            finalPulse.style.strokeDasharray = length;
+            finalPulse.style.strokeDashoffset = length;
+
+            document.getElementById('pulseLayer').appendChild(finalPulse);
+            glowingLines.push(finalPulse);
+
+            finalPulse.getBoundingClientRect();
+
+            finalPulse.style.transition = 'stroke-dashoffset 0.8s ease-out';
+            requestAnimationFrame(() => {
+                finalPulse.style.strokeDashoffset = '0';
+            });
+
+            await new Promise(r => setTimeout(r, 800));
+
+            const dxPanel = document.getElementById('dxPanel');
+            document.getElementById('dxText').textContent = scenario.diagnosis;
+            document.getElementById('urgNum').textContent = scenario.score;
+
+            dxPanel.style.borderColor = color;
+            dxPanel.style.boxShadow = `0 10px 60px ${color}4d, inset 0 0 30px ${color}0d`;
+
+            document.getElementById('urgBar').style.backgroundColor = color;
+            document.getElementById('urgBar').style.boxShadow = `0 0 10px ${color}`;
+
+            const iconCircles = dxPanel.querySelectorAll('.dx-icon circle');
+            iconCircles.forEach(c => {
+                if (c.getAttribute('fill') !== 'none') c.setAttribute('fill', color);
+                else c.setAttribute('stroke', color);
+            });
+
+            dxPanel.classList.add('show');
+
+            setTimeout(() => {
+                document.getElementById('urgBar').style.width = scenario.urgency + '%';
+            }, 200);
+
+            setTimeout(() => {
+                currentScenarioIndex = (currentScenarioIndex + 1) % scenarios.length;
+                runSequence();
+            }, 4000);
+        }
+
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                createStaticWeb();
+            }, 200);
+        });
+
+        createStaticWeb();
+        setTimeout(runSequence, 1000);
+
+        // Doctor animation with slide effect
+        function animateDoctorTransition() {
+            const waitingImg = document.querySelector('.waiting-img');
+            const callImg = document.querySelector('.call-img');
+            const statusText = document.querySelector('.status-text');
+            const statusDot = document.querySelector('.status-dot');
+
+            // Start with waiting screen
+            setTimeout(() => {
+                // Slide to call screen
+                waitingImg.classList.add('slide-out');
+                callImg.classList.add('active');
+                callImg.classList.add('slide-in');
+                statusText.textContent = 'Connected with Dr. Sharma';
+                statusDot.style.background = '#27c93f';
+            }, 3000);
+
+            // Go back to waiting after 4 seconds
+            setTimeout(() => {
+                callImg.classList.remove('active');
+                callImg.classList.remove('slide-in');
+                waitingImg.classList.remove('slide-out');
+                waitingImg.classList.add('active');
+                statusText.textContent = 'Connecting to Dr. Sharma...';
+                statusDot.style.background = '#27c93f';
+            }, 7000);
+
+            // Loop the animation
+            setTimeout(animateDoctorTransition, 7000);
+        }
+
+        // Start doctor animation when section is in view
+        const observerOptions = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateDoctorTransition();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const doctorSection = document.querySelector('.doctor-validation-section');
+        if (doctorSection) {
+            observer.observe(doctorSection);
+        }
+    </script>
+</body>
+
+</html>
