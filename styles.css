@@ -1387,8 +1387,8 @@ body {
     .dx-panel {
         position: relative;
         bottom: auto;
-        left: auto;
-        transform: none;
+        left: 50%;
+        transform: translateX(-50%);
         margin-top: 3rem;
         width: 100%;
         max-width: 550px
@@ -1744,11 +1744,13 @@ body {
         position: absolute;
         bottom: 5%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%) translateY(100%);
+        opacity: 0;
     }
 
     .dx-panel.show {
-        transform: translateX(-50%);
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
     }
 
     .dx-diagnosis {
@@ -1977,11 +1979,13 @@ body {
         margin: 0;
         left: 50%;
         bottom: 3%;
-        transform: translateX(-50%);
+        transform: translateX(-50%) translateY(100%);
+        opacity: 0;
     }
     
     .dx-panel.show {
-        transform: translateX(-50%);
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
     }
     
     .dx-diagnosis {

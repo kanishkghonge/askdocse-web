@@ -161,15 +161,28 @@
                 </div><span class="node-label">High Fever</span>
             </div>
 
-            <div class="node dim" style="top:10%;left:45%;">
+            <div class="node" id="n7" style="top:25%;left:25%;" data-id="weightloss">
                 <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Unexplained Weight Loss</span>
             </div>
-            <div class="node dim" style="top:25%;left:50%;">
+            <div class="node" id="n8" style="top:50%;left:80%;" data-id="fatigue">
                 <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Repeated Complaints of Fatigue</span>
             </div>
-            <div class="node dim" style="top:30%;left:15%;">
+            <div class="node" id="n9" style="top:30%;left:60%;" data-id="skincolor">
                 <div class="node-core"></div>
+                <div class="node-rings">
+                    <div></div>
+                    <div></div>
+                </div><span class="node-label">Skin Discoloration</span>
             </div>
+
             <div class="node dim" style="top:35%;left:85%;">
                 <div class="node-core"></div>
             </div>
@@ -177,9 +190,6 @@
                 <div class="node-core"></div>
             </div>
             <div class="node dim" style="top:45%;left:85%;">
-                <div class="node-core"></div>
-            </div>
-            <div class="node dim" style="top:30%;left:80%;">
                 <div class="node-core"></div>
             </div>
             <div class="node dim" style="top:50%;left:45%;">
@@ -193,7 +203,7 @@
             </div>
 
             <!-- Central Diagnosis Node -->
-            <div class="node diagnosis-node" id="diagnosisNode" style="top:70%;left:50%;">
+            <div class="node diagnosis-node" id="diagnosisNode" style="top:85%;left:50%;">
                 <div class="node-core"></div>
                 <div class="node-rings">
                     <div></div>
@@ -383,6 +393,13 @@
                 urgency: 75,
                 score: '7.5/10',
                 color: '#ffbd2e'
+            },
+            {
+                path: ['n7', 'n8', 'n9'],
+                diagnosis: "Addison's Disease",
+                urgency: 85,
+                score: '8.5/10',
+                color: '#ff6b9d'
             }
         ];
         let currentScenarioIndex = 0;
@@ -497,11 +514,144 @@
             });
         }
 
+        // Store original positions
+        const originalPositions = new Map();
+        
+        function storeOriginalPositions() {
+            const allNodes = document.querySelectorAll('.node');
+            allNodes.forEach(node => {
+                if (node.style.top && node.style.left) {
+                    originalPositions.set(node, {
+                        top: node.style.top,
+                        left: node.style.left
+                    });
+                }
+            });
+        }
+
+        async function jumbleNodes() {
+            return new Promise(resolve => {
+                const allNodes = document.querySelectorAll('.node');
+                const jumbleDuration = 600;
+                const diagnosisNode = document.getElementById('diagnosisNode');
+                
+                // Define a grid-like layout - spread nodes more across the field
+                const positions = [
+                    { top: 15, left: 10 },
+                    { top: 18, left: 75 },
+                    { top: 20, left: 45 },
+                    { top: 23, left: 88 },
+                    { top: 28, left: 15 },
+                    { top: 32, left: 65 },
+                    { top: 35, left: 30 },
+                    { top: 38, left: 82 },
+                    { top: 42, left: 12 },
+                    { top: 45, left: 55 },
+                    { top: 48, left: 90 },
+                    { top: 52, left: 25 },
+                    { top: 55, left: 70 },
+                    { top: 58, left: 40 },
+                    { top: 60, left: 85 },
+                    { top: 25, left: 50 },
+                    { top: 50, left: 8 },
+                    { top: 62, left: 60 }
+                ];
+                
+                // Shuffle positions array
+                const shuffledPositions = positions.sort(() => Math.random() - 0.5);
+                let posIndex = 0;
+                
+                allNodes.forEach(node => {
+                    if (!node.style.top || !node.style.left) return;
+                    
+                    // Keep diagnosis node at the bottom
+                    if (node === diagnosisNode) {
+                        return;
+                    }
+                    
+                    // Assign a position from the shuffled array
+                    const pos = shuffledPositions[posIndex % shuffledPositions.length];
+                    posIndex++;
+                    
+                    const randomTop = pos.top + '%';
+                    const randomLeft = pos.left + '%';
+                    
+                    // Apply transition
+                    node.style.transition = `top ${jumbleDuration}ms ease-in-out, left ${jumbleDuration}ms ease-in-out`;
+                    
+                    // Move to new position
+                    setTimeout(() => {
+                        node.style.top = randomTop;
+                        node.style.left = randomLeft;
+                    }, 10);
+                });
+                
+                // Resolve after nodes reach new positions
+                setTimeout(resolve, jumbleDuration + 100);
+            });
+        }
+
+        async function returnNodesToOriginal() {
+            return new Promise(resolve => {
+                const allNodes = document.querySelectorAll('.node');
+                const returnDuration = 600;
+                
+                allNodes.forEach(node => {
+                    const original = originalPositions.get(node);
+                    if (!original) return;
+                    
+                    node.style.transition = `top ${returnDuration}ms ease-in-out, left ${returnDuration}ms ease-in-out`;
+                    
+                    setTimeout(() => {
+                        node.style.top = original.top;
+                        node.style.left = original.left;
+                    }, 10);
+                });
+                
+                setTimeout(resolve, returnDuration + 100);
+            });
+        }
+
+        function hideStaticWeb() {
+            const svg = document.getElementById('staticWeb');
+            svg.style.transition = 'opacity 300ms ease-out';
+            svg.style.opacity = '0';
+        }
+
+        function showStaticWeb() {
+            const svg = document.getElementById('staticWeb');
+            svg.style.transition = 'opacity 300ms ease-in';
+            svg.style.opacity = '1';
+        }
+
+        function fadeOutGlowingLines() {
+            return new Promise(resolve => {
+                glowingLines.forEach(line => {
+                    line.style.transition = 'opacity 300ms ease-out';
+                    line.style.opacity = '0';
+                });
+                setTimeout(resolve, 300);
+            });
+        }
+
         async function runSequence() {
             const scenario = scenarios[currentScenarioIndex];
             const color = scenario.color || '#00f2ff';
 
             resetAnimation();
+            await new Promise(r => setTimeout(r, 300));
+            
+            // Add jumbling animation for both scenarios
+            // Hide static web
+            hideStaticWeb();
+            await new Promise(r => setTimeout(r, 300));
+            
+            // Jumble nodes to random positions
+            await jumbleNodes();
+            
+            // Recreate web with new positions
+            createStaticWeb();
+            showStaticWeb();
             await new Promise(r => setTimeout(r, 300));
 
             await activateNode(scenario.path[0]);
@@ -517,33 +667,8 @@
             await drawLine(lastSymptomId, 'diagnosisNode', 800, color);
             await activateNode('diagnosisNode');
 
-            const diagPos = getNodePos('diagnosisNode');
-            const panelTarget = { x: diagPos.x, y: 800 };
-            const length = Math.abs(panelTarget.y - diagPos.y);
-
-            const finalPulse = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            finalPulse.setAttribute('class', 'pulse-line');
-            finalPulse.style.stroke = color;
-            finalPulse.style.filter = `drop-shadow(0 0 8px ${color})`;
-            finalPulse.setAttribute('x1', diagPos.x);
-            finalPulse.setAttribute('y1', diagPos.y);
-            finalPulse.setAttribute('x2', panelTarget.x);
-            finalPulse.setAttribute('y2', panelTarget.y);
-
-            finalPulse.style.strokeDasharray = length;
-            finalPulse.style.strokeDashoffset = length;
-
-            document.getElementById('pulseLayer').appendChild(finalPulse);
-            glowingLines.push(finalPulse);
-
-            finalPulse.getBoundingClientRect();
-
-            finalPulse.style.transition = 'stroke-dashoffset 0.8s ease-out';
-            requestAnimationFrame(() => {
-                finalPulse.style.strokeDashoffset = '0';
-            });
-
-            await new Promise(r => setTimeout(r, 800));
+            // Wait a bit before showing diagnosis panel
+            await new Promise(r => setTimeout(r, 500));
 
             const dxPanel = document.getElementById('dxPanel');
             document.getElementById('dxText').textContent = scenario.diagnosis;
@@ -567,7 +692,23 @@
                 document.getElementById('urgBar').style.width = scenario.urgency + '%';
             }, 200);
 
-            setTimeout(() => {
+            setTimeout(async () => {
+                // Always return nodes to original positions after diagnosis
+                // Fade out glowing lines first
+                await fadeOutGlowingLines();
+                
+                // Hide static web
+                hideStaticWeb();
+                await new Promise(r => setTimeout(r, 300));
+                
+                // Return nodes to original positions
+                await returnNodesToOriginal();
+                
+                // Recreate web with original positions
+                createStaticWeb();
+                showStaticWeb();
+                await new Promise(r => setTimeout(r, 300));
+                
                 currentScenarioIndex = (currentScenarioIndex + 1) % scenarios.length;
                 runSequence();
             }, 4000);
@@ -581,6 +722,7 @@
             }, 200);
         });
 
+        storeOriginalPositions();
         createStaticWeb();
         setTimeout(runSequence, 1000);
 
