@@ -140,6 +140,128 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Review Slideshow for Mobile
+let reviewInterval;
+
+function initReviewSlideshow() {
+    const isMobile = window.innerWidth <= 768;
+    const reviewCards = document.querySelectorAll('.review-card');
+    const reviewDots = document.querySelectorAll('.review-dot');
+    
+    // Clear any existing interval
+    if (reviewInterval) {
+        clearInterval(reviewInterval);
+    }
+    
+    if (!isMobile) {
+        // Show all reviews on desktop
+        reviewCards.forEach(card => {
+            card.classList.remove('active');
+            card.style.display = 'flex';
+        });
+        return;
+    }
+    
+    let currentReview = 0;
+    
+    // Show first review
+    reviewCards.forEach((card, index) => {
+        card.classList.remove('active');
+        card.style.display = 'none';
+        if (index === 0) {
+            card.classList.add('active');
+            card.style.display = 'flex';
+        }
+    });
+    
+    // Show first dot as active
+    reviewDots.forEach((dot, index) => {
+        dot.classList.remove('active');
+        if (index === 0) {
+            dot.classList.add('active');
+        }
+    });
+    
+    function showReview(index) {
+        reviewCards.forEach(card => {
+            card.classList.remove('active');
+            card.style.display = 'none';
+        });
+        reviewDots.forEach(dot => dot.classList.remove('active'));
+        
+        reviewCards[index].classList.add('active');
+        reviewCards[index].style.display = 'flex';
+        reviewDots[index].classList.add('active');
+        currentReview = index;
+    }
+    
+    // Auto-advance slideshow every 4 seconds
+    reviewInterval = setInterval(() => {
+        currentReview = (currentReview + 1) % reviewCards.length;
+        showReview(currentReview);
+    }, 4000);
+    
+    // Dot click handlers
+    reviewDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            clearInterval(reviewInterval);
+            showReview(index);
+            // Restart auto-advance
+            reviewInterval = setInterval(() => {
+                currentReview = (currentReview + 1) % reviewCards.length;
+                showReview(currentReview);
+            }, 4000);
+        });
+    });
+    
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const reviewsContainer = document.querySelector('.reviews-container');
+    if (reviewsContainer) {
+        reviewsContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        reviewsContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left - next review
+                clearInterval(reviewInterval);
+                currentReview = (currentReview + 1) % reviewCards.length;
+                showReview(currentReview);
+                // Restart auto-advance
+                reviewInterval = setInterval(() => {
+                    currentReview = (currentReview + 1) % reviewCards.length;
+                    showReview(currentReview);
+                }, 4000);
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Swipe right - previous review
+                clearInterval(reviewInterval);
+                currentReview = (currentReview - 1 + reviewCards.length) % reviewCards.length;
+                showReview(currentReview);
+                // Restart auto-advance
+                reviewInterval = setInterval(() => {
+                    currentReview = (currentReview + 1) % reviewCards.length;
+                    showReview(currentReview);
+                }, 4000);
+            }
+        }
+    }
+}
+
+// Initialize on load and resize
+initReviewSlideshow();
+window.addEventListener('resize', () => {
+    initReviewSlideshow();
+});
+
 // Mobile-specific adjustments for neural field
 function adjustNeuralFieldForMobile() {
     const isMobile = window.innerWidth <= 768;
